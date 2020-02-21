@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{{ title }}{% endblock %} - NLP</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='flat/dist/css/vendor/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='flat/dist/css/flat-ui.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='flat/dist/css/mdb.min.css') }}">
+    {% block css %}{% endblock %}
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar navbar-inverse navbar-embossed navbar-expand-lg" role="navigation">
+            <a class="navbar-brand" href="/">MM</a>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse-01"></button>
+            <div class="collapse navbar-collapse" id="navbar-collapse-01">
+                <ul class="nav navbar-nav mr-auto">
+                    <!-- <li class={% if path == "/" %}{{'active'}}{% else %}{{''}}{% endif %}><a href="/">Summary</a></li>
+                    <li class={% if path == "/page/topic" %}{{'active'}}{% else %}{{''}}{% endif %}><a href="/page/topic">Topic</a></li>
+                    <li class={% if path == "/page/similarity" %}{{'active'}}{% else %}{{''}}{% endif %}><a href="/page/similarity">Similarity</a></li>
+                    <li class={% if path == "/page/sentiment" %}{{'active'}}{% else %}{{''}}{% endif %}><a href="/page/sentiment">Sentiment</a></li>
+                    <li class={% if path == "/page/entity" %}{{'active'}}{% else %}{{''}}{% endif %}><a href="/page/entity">Named Entity</a></li>
+                    <li class={% if path == "/page/translation" %}{{'active'}}{% else %}{{''}}{% endif %}><a href="/page/translation">Translation</a></li>
+                    <li class={% if path == "/page/video" %}{{'active'}}{% else %}{{''}}{% endif %}><a href="/page/video">Video Transcription Demo</a></li> -->
+                    <li class={% if path == "/" %}{{'active'}}{% else %}{{''}}{% endif %}><a href="/">Video Transcription Demo</a></li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </nav><!-- /navbar -->
+        <section id="content">
+            {% block content %}{% endblock %}
+        </section>
+        <br>
+        <footer class="navbar-inverse navbar-embossed">
+            <div class="container text-center">
+                <p class="copyright">
+                <a href="">© Media Meter Inc. 2020</a> <br>
+                All Rights Reserved
+                <a targer="_blank" href="https://media-meter.net"></a>
+                </p>
+            </div>
+        </footer>
+    </div>
+    <script src="{{ url_for('static', filename='flat/dist/scripts/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='flat/dist/scripts/popper.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='flat/dist/scripts/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='flat/dist/scripts/flat-ui.min.js') }}"></script>
+    <!-- <script src="{{ url_for('static', filename='flat/dist/scripts/mdb.min.js') }}"></script> -->
+    {% block js %}{% endblock %}
+</body>
+</html>

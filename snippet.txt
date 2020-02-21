@@ -1,0 +1,57 @@
+<script>
+
+    const upload = async (data) => {
+        return new Promise((resolve, reject) =>{
+            try{
+                $.ajax({
+                    url: '/upload_vids',
+                    type:'POST',
+                    enctype: 'multipart/form-data',
+                    processData: false,
+                    contentType: false,
+                    cache: false,
+                    // contentType: 'application/json; charset=utf-8',
+                    data: data,
+                    dataType:'json'
+                }).then(r=>resolve(r)).catch(e=>reject(e))
+            }catch(e){
+                reject(e)
+            }
+        })
+    }
+    $(document).on('click', 'button', function(e){
+        $('input[type="file"]').click()
+    })
+
+    $(document).on('change', 'input[type="file"]', async function(e){
+        let filesData = []
+        $.each(this.files, (i, e)=>{
+            filesData[i] = e
+        })
+        // console.log(filesData)
+        
+        let mapData = filesData.map(v=>{
+            let formData = new FormData()
+            formData.append('file', v)
+            return formData
+        })
+
+        let result = await Promise.all(mapData.map(async fd => await upload(fd)))
+        console.log(result)
+    })
+
+</script>
+
+
+@app.route('/upload_vids', methods=['POST'])
+def upload_vids():
+files = request.files['file']
+filename = files.filename
+file_type = files.content_type
+response = {}
+response['filename'] = filename
+response['file_type'] = file_type
+# print(response)
+
+files.save(os.getcwd()+'/uploads/'+filename)
+return jsonify(response)

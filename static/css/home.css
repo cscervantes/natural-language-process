@@ -1,0 +1,16 @@
+/* body{
+    background-color: bisque;
+} */
+
+#box{
+    margin: 0 auto;
+    border: 2px dashed grey;
+    border-radius: 5px;
+    border-spacing: 100px;
+    height: 290px;
+    padding-top: 3.5%;
+}
+
+input[type="file"]{
+    display: none;
+}
